@@ -1,0 +1,22 @@
+
+# Reference:
+
+https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token
+
+
+# Get the token.
+
+Settings -> Developer settings -> Personal access tokens -> Tokens (classic).
+
+
+# Errors may occur if try to git push with password.
+
+remote: Support for password authentication was removed on August 13, 2021.
+remote: Please see
+https://docs.github.com/en/get-started/getting-started-with-git/about-remote-repositories#cloning-with-https-urls
+for information on currently recommended modes of authentication.
+
+When you git clone, git fetch, git pull, or git push to a remote repository using HTTPS URLs on the command line,
+Git will ask for your GitHub username and password.
+When Git prompts you for your password, enter your personal access token.
+

@@ -1,0 +1,33 @@
+
+# Reference:
+
+https://docs.github.com/en/get-started/using-git/getting-changes-from-a-remote-repository
+
+Two alternative workflows for the same purpose.
+
+# Workflow 1: Steps.
+
+# 1. Fetching changes from a remote repository.
+
+$ git fetch REMOTE-NAME
+# Fetches updates made to a remote repository
+# REMOTE-NAME is the remote URL.
+
+# 2. Merging changes into your local branch.
+
+$ git merge REMOTE-NAME/BRANCH-NAME
+# Merges updates made online with your local work
+
+
+# Workflow 2: Steps.
+
+# 1. Pulling changes from a remote repository
+
+$ git pull REMOTE-NAME BRANCH-NAME
+# Grabs online updates and merges them with your local work
+
+# 2. (Optional) Abort merge.
+
+$ git merge --abort
+# Take the branch back to where it was in before you pulled,
+# if you run into a merge conflict you cannot resolve, or if you decide to quit the merge.

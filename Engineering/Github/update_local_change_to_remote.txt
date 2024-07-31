@@ -1,0 +1,39 @@
+
+# Reference:
+
+https://www.earthdatascience.org/workshops/intro-version-control-git/basic-git-commands/
+
+
+# 1. Clone your repository to your local machine
+
+cd Documents
+
+git clone https://github.com/YOUR-USERNAME/YOUR-REPOSITORY
+
+# 2. Tracking changes with git add and git commit
+
+cd my-repo-name
+
+git status
+
+# add an individual file or groups of files to git tracking
+
+git add file-name-here-with-extension
+
+or
+
+git add --all
+
+git commit -m "Some comments"
+
+Editing the README to try out git add/commit"
+
+# 3. Push changes.
+
+git push
+
+
+
+
+
+
