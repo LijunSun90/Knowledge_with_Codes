@@ -15,7 +15,7 @@ Therefore, taking notes is necessary and GitHub is a better place for archive no
 The purpose of knowing knowledge is to use it.
 Implementing the knowledge in codes is such a way to use it.
 
-3. Off-the-shelf codes help me and my friend.
+3. Off-the-shelf codes help me and my friends.
 
 I specialize in some domains with some knowledge.
 I often feel I can solve and help my friends on some scientific problems.
