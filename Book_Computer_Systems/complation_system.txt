@@ -1,0 +1,11 @@
+
+# Source program (text): hello.c
+
+# -> Pre-processor (CPP) -> Modified source program (text): hello.i
+
+# -> Compiler (cc1) -> Assembly program (text): hello.s
+
+# -> Assembler (as) -> Relocatable object programs (binary): hello.o
+
+# -> Linker (ld) -> Executable object program (binary): hello
+

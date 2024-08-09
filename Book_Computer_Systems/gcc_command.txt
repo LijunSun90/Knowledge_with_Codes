@@ -1,0 +1,35 @@
+
+################################################################################
+# Basic
+################################################################################
+# Translate source file "foo.c" to object file "foo".
+gcc -o foo foo.c
+
+# Translate source file "foo.c" to relocatable object program "a.out".
+gcc foo.c
+
+
+################################################################################
+# C version
+################################################################################
+# C version: GNU 89
+gcc -std=gnu89 foo.c
+
+# C version: ANSI, ISO C90
+gcc -ansi, -std=c89 foo.c
+
+# C version: ISO C99
+gcc -std=c99 foo.c
+
+# C version: ISO C11
+gcc -std=c11 foo.c
+
+
+################################################################################
+# Word size of a machine
+################################################################################
+# 32-bit program, runnable on 32-bit or 64-bit machine
+gcc -m32 foo.c
+
+# 64-bit program, runnable on 64-bit machine
+gcc -m64 foo.c
