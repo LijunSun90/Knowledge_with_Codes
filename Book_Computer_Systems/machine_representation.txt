@@ -1,0 +1,24 @@
+
+
+# (Memory) Address (from CSAPP 2.1.3)
+
+1. A "multi-byte object is stored as a contiguous sequences of bytes"
+2. The address of a multi-byte object is "the smallest address of the bytes used".
+
+
+# Big endian and little endian (from CSAPP 2.1.3)
+
+1. Bit representation of w bits: [x_{w-1}, ..., x_0], e.g, Ox01234567.
+2. Most significant byte: [x_{w-1}, ..., x_{w-8}].
+3. Least significant byte: [x_7, ..., x_0].
+4. Big endian: the most significant byte comes first (stores in the memory byte of the smallest address).
+Address 0x100: 01
+Address 0x101: 23
+Address 0x102: 45
+Address 0x103: 67
+5. Little endian: the least significant byte comes first (stores in the memory byte of the smallest address).
+Address 0x100: 67
+Address 0x101: 45
+Address 0x102: 23
+Address 0x103: 01
+
