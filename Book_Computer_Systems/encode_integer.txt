@@ -2,28 +2,64 @@
 
 # Integer representation.
 
-1). Binary (B), 2). Unsigned (U), 3). Sign magnitude (S), 4). Ones' complement (O), 5). Two's complement (T).
+0). Binary (B),
 
-Highlights:
+    xb = [x_{w-1}, ..., x_0]
 
-1. Bijection: Unsigned, Two's complement.
-2. Non-bijection: Sign magnitude, Ones' complement.
+1). Unsigned (U),
+
+    B2U(xb) = \sum_{i=0}^{w-1} x_i * 2^i.
+
+    UMax_w = 2^w - 1, UMin_w = 0
+
+2). Sign magnitude (S),
+
+    B2S(xs) = (-1)^{xs_{w-1}} * (\sum_{i=0}^{w-2} xs_i * 2^i).
+
+    SMax_w = 2^{w-1} - 1, SMin_w = -(2^{w-1} - 1)
+
+3). Ones' complement (O),
+
+    B2O(xo) = - xo_{w-1} * (2^{w-1} - 1) + \sum_{i=0}^{w-2} xo_i * 2^i
+
+    OMax_w = 2^{w-1} - 1, OMin_w = - (2^{w-1} - 1)
+
+4). Two's complement (T).
+
+    B2T(xt) = -xt_{w-1} * 2^{w-1} + \sum_{i=0}^{w-2} xt_i * 2^i.
+
+    TMax_w = 2^{w-1} - 1, TMin_w = - 2^{w-1}.
+
+5). Conversation.
+
+    T2U(xt) = B2U(T2B(xt)) = xt_{w-1} * 2^w + xt = xu
+
+    U2T(x) = - x_{w-1} * 2^w + x = xt
+
+* Highlights:
+
+1). Bijection: Unsigned, Two's complement.
+
+2). Non-bijection: Sign magnitude, Ones' complement.
+
 
 
 0. Integer x, e.g., 6.
 
 1. Binary representation of x, equivalently unsigned encoding.
 
-Bit vector of an integer: x_b = [x_{w-1}, ..., x_0], e.g., [0110].
+Bit vector of an integer: xb = [x_{w-1}, ..., x_0], e.g., [0110].
 
 
 2. Unsigned encoding.
+
+xu = [xu_{w-1}, ..., xu_0] =  xb = [x_{w-1}, ..., x_0].
 
 Property:
 
 1) To decimal.
 
-B2U(x_b) = \sum_{i=0}^{w-1} x_i * 2^i.
+B2U(xb) = \sum_{i=0}^{w-1} x_i * 2^i.
 
 2) Range:
 
@@ -33,7 +69,7 @@ UMin_w = 0
 
 2. Sign magnitude encoding.
 
-x_s = [xs_{w-1}, ..., xs_0]
+xs = [xs_{w-1}, ..., xs_0]
 
 Property:
 
@@ -42,7 +78,7 @@ Property:
 
 1) To decimal (how to interpret the binary):
 
-B2S(x_s) = (-1)^{xs_{w-1}} * \sum_{i=0}^{w-2} xs_i * 2^i.
+B2S(xs) = (-1)^{xs_{w-1}} * (\sum_{i=0}^{w-2} xs_i * 2^i).
 
 2) Range:
 
@@ -57,14 +93,14 @@ SMin_w = -(2^{w-1} - 1)
 
 3. Ones' complement encoding (a representation of signed number, signed number encoding).
 
-x_o = ~x_b = ~[x_{w-1}, ..., x_0] = [xo_{w-1}, ..., xo_0], e.g., [1001].
+xo = ~xb = ~[x_{w-1}, ..., x_0] = [xo_{w-1}, ..., xo_0], e.g., [1001].
 "inverting (flipping) all the bits" [1].
 
 The most significant bit xo_{w-1} is the sign bit: 0 for positive, 1 for negative.
 
 Property:
 
-1) x_b + x_o = x_b | x_o = x_b | (~x_b) =  = [x_{w-1}, ..., x_0] | [xo_{w-1}, ..., xo_0] = [1, ..., 1],
+1) xb + xo = xb | xo = xb | (~xb) =  = [x_{w-1}, ..., x_0] | [xo_{w-1}, ..., xo_0] = [1, ..., 1],
 where the term "ones" comes from.
 (Note: the "+" in the above equation means the bit-level operation: "OR |".)
 
@@ -74,13 +110,13 @@ e.g.,
 ----------
   1 1 1 1
 
-2) x_b + x_o = 2^w - 1 (if both the binary representation of x_b and x_o are interpretd as the unsigned date type).
+2) xb + xo = 2^w - 1 (if both the binary representation of xb and xo are interpretd as the unsigned date type).
 
 3) To decimal (how to interpret the binary):
 
 The most significant bit has weight: - (2^{w-1} - 1).
 
-B2O(x_o) = - xo_{w-1} * (2^{w-1} - 1) + \sum_{i=0}^{w-2} xo_i * 2^i
+B2O(xo) = - xo_{w-1} * (2^{w-1} - 1) + \sum_{i=0}^{w-2} xo_i * 2^i
 
 Derivation:
 
@@ -91,8 +127,8 @@ so, the weight for xo_{w_1} should be at least (2^{w-1} - 1).
 
 4) Range:
 
-OMax_w = 2^{w-1} - 1, when x_o = [0, 1, ..., 1].
-OMin_w = - (2^{w-1} - 1), when x_o = [1, 0, ..., 0].
+OMax_w = 2^{w-1} - 1, when xo = [0, 1, ..., 1].
+OMin_w = - (2^{w-1} - 1), when xo = [1, 0, ..., 0].
 
 5) Zero: two different encodings for the number 0.
 
@@ -100,9 +136,12 @@ OMin_w = - (2^{w-1} - 1), when x_o = [1, 0, ..., 0].
 -0: [1, 1, ..., 1]
 
 
-3. Two's complement encoding.
+4. Two's complement encoding.
 
-x_t = (~x_b) + 1 = (~x_o) + 1 = [xt_{w-1}, ..., xt_0], e.g., [1010].
+xt = (~xb) + 1 = xo + 1 = [xt_{w-1}, ..., xt_0], e.g., [1010].
+
+xt = [xo_{w-1}, ~xo_{w-2}, ..., xo_0] + 1,
+where the sign bit xo_{w-1} of the signed integer xo is kept as it is in xt.
 
 The most significant bit xt_{w-1} is the sign bit: 0 for positive, 1 for negative.
 
@@ -118,15 +157,15 @@ e.g.,
 
 Property:
 
-1) x_t = -x_b = 2^w - x_b = [xt_{w-1}, ..., xt_0] if x_b >= 0, where the term "two" comes from.
+1) xt = -xb = 2^w - xb = [xt_{w-1}, ..., xt_0] if xb >= 0, where the term "two" comes from.
 
-2) x_b + x_t = 2^w (if both the binary representation of x_b and x_t are interpreted as the unsigned date type).
+2) xb + xt = 2^w (if both the binary representation of xb and xt are interpreted as the unsigned date type).
 
 3) To decimal (how to interpret the binary):
 
 The most significant bit has weight: - 2^{w-1}.
 
-B2T(x_t) = -xt_{w-1} * 2^{w-1} + \sum_{i=0}^{w-2} xt_i * 2^i.
+B2T(xt) = -xt_{w-1} * 2^{w-1} + \sum_{i=0}^{w-2} xt_i * 2^i.
 
 4) Range:
 
@@ -140,6 +179,12 @@ TMin_w = - TMax_w - 1.
 0: [0, 0, ..., 0].
 
 -1: [1, 1, ..., 1] = OxF...F = UMax_w.
+
+
+5. Conversation:
+
+T2U(x) = B2U(T2B(x)) = x + x_{w-1} * 2^w
+U2T(x) = - x_{w-1} * 2^w + x
 
 
 # Reference:
