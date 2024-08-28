@@ -1,0 +1,36 @@
+
+# Mac, Zsh
+
+################################################################################
+# Step 0: Find the default prompt.
+################################################################################
+# Default prompt is defined in /etc/zshrc
+# Default prompt
+PS1="%n@%m %1~ %# "
+
+# %n is account username.
+# %m is Mac's model name.
+# %1~ means the current working directory path, where the ~ strips the $HOME directory location
+# %# means that the prompt will show # if the shell is running with root (administrator) privileges and % if it doesn't.
+
+
+################################################################################
+# Step 1: Change the prompt.
+################################################################################
+# Add in ~/.zshrc
+# PS1="..." or PROMPT="..."
+# The following command, which takes two lines, moves the command prompt to the next line,
+# i.e., the prompt appears in a separate line.
+PROMPT="%n@%m %1~
+%# "
+
+################################################################################
+# Step 2: See the changes.
+################################################################################
+# Close and reopen the terminal, or
+Source ~/.zshrc
+
+
+# Reference:
+[1] https://www.makeuseof.com/customize-zsh-prompt-macos-terminal/
+[2] https://stackoverflow.com/questions/20512957/zsh-new-line-prompt-after-each-command

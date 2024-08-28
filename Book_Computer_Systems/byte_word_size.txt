@@ -1,0 +1,23 @@
+
+* virtual memory: array of bytes.
+
+* Bytes: 8 bits, each has a memory address. 
+
+1 B (byte) = 8 bits
+1 KB (kilobyte) = 10^3 B = 2^10 B
+1 MB (megabyte) = 10^6 B = 2^20 B
+1 GB (gigabyte) = 10^9 B = 2^30 B
+1 TB (terabyte) = 10^12 B = 2^40 B
+1 PB (petabyte) = 10^15 B = 2^50 B
+1 EB (exabyte) = 10^18 B = 2^60 B
+1 ZB (zettabyte) = 10^21 B = 2^70 B
+
+* Word: Why word? "Buses are typically designed to transfer fixed-size chunks of bytes known as words."
+
+* Word size: the number of bytes or bits (1 byte = 8 bits) for a word in a machine.
+A word uses the word-size bytes or bits (1 byte = 8 bits) to encode a virtual address and thus the word size determines the maximum size of the virtual address space, i.e., 0 to (2^w - 1) if world size is w bits.
+
+1) 32-bit machine: 1 W (word) = 32 bits = 4 bytes, the value it can represent range  from 0 to 2^32 = 4 GB, thus the max memory address = 4 GB.
+
+2)64-bit machine: 1 W (word) = 64 bits = 8 bytes, the value it can represent range  from 0 to 2^64 = 16 EB, thus the max memory address = 16 EB.
+
