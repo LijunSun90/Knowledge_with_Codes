@@ -33,3 +33,59 @@ gcc -m32 foo.c
 
 # 64-bit program, runnable on 64-bit machine
 gcc -m64 foo.c
+
+
+################################################################################
+# Compiler System
+# -E, Only run the preprocessor
+# -S, Only run preprocess and compilation steps
+# -c, Only run preprocess, compile, and assemble steps
+
+Example outputs:
+hello.c: 78B
+hello.i: 24K
+hello.s: 944B
+hello.o: 744B
+hello  : 33K
+################################################################################
+
+########## 1. Preprocessor: Output "*.i", modified source file.
+
+gcc -E foo.c -o foo.i
+
+# It is OK if using a different suffix apart from ".i" for the output,
+# e.g., ".i2"
+# gcc -E foo.c -o foo.i2
+
+# If you can check the difference between the file "foo.i" and "foo.i2",
+# you will find they are the same without any output for the following command.
+cmp foo.i foo.i2
+
+########## 2. Compiler: Output "*.s", assembly program".
+
+gcc -S foo.c -o foo.s
+
+# It is OK if using a different suffix apart from ".s" for the output,
+# e.g., ".s2"
+# gcc -S foo.c -o foo.s2
+
+# Output "*.s" file directly from "*.i"
+gcc -S foo.i -o foo_from_i.s
+
+########## 3. Assembler: Output "*.o", relocatable object program.
+
+gcc -c foo.c -o foo.o
+
+# It is OK if using a different suffix apart from ".o" for the output,
+# e.g., ".o2"
+# gcc -c foo.c -o foo.o2
+
+# Output "*.o" directly from relocatable objective file "*.o".
+gcc -c foo.s -o foo_from_s.o
+
+########## 4. Linker: Output executable object program (binary).
+
+# Output "*.o" directly from "*.o".
+gcc foo.o -o foo_from_o
+
+
