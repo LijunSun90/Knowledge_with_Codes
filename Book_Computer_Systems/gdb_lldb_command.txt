@@ -1,0 +1,128 @@
+
+# gdb is a powerful debugger for C and C++.
+# lldb is a clang debugger.
+# clang is a C, C++, and Objective-C compiler.
+
+# [1] Tutorial: https://web.eecs.umich.edu/~sugih/pointers/summary.html
+
+################################################################################
+# 1. Compile.
+# "To prepare your program for debugging with gdb, you must compile it with the
+-g flag."
+################################################################################
+gcc -g foo.c -o foo
+
+
+################################################################################
+# 2. Invoke & quit gdb.
+# Invoke: type "gdb" at the shell prompt.
+# Quit: use "quit" at the prompt (gdb).
+################################################################################
+# At the shell prompt:
+gdb executable
+
+#
+lldb executable
+
+
+################################################################################
+3. gdb commands.
+################################################################################
+(gdb) help
+
+
+########## file
+
+# Specify which program to debug.
+(gdb) file executable
+
+########## run
+
+# Start the program previously selected with the file command,
+# or on the unix command line when started gdb.
+(gdb) run
+
+# Give command line arguments.
+(gdb) run 2048 24 4
+
+# Redirect input/output.
+(gdb) run > outfile.txt
+
+########## break
+
+# Set a breakpoint at the beginning of function.
+(gdb) break function
+
+# If code is in multiple files.
+(gdb) break filename1:function1 filename2:function2
+
+# Set the breakpoint to the given line number in the source file.
+(gdb) break linenumber
+(gdb) break filename:linenumber
+
+########## delete
+
+# Delete all breakpoints that have been set.
+(gdb) delete
+
+# Delete breakpoint numbered number.
+(gdb) delete number
+
+# Find out what number each breakpoint is by doing
+(gdb) info breakpoints
+
+
+########## clear
+
+# Delete the breakpoint set at that function.
+(gdb) clear function
+(gdb) clear filename:function
+(gdb) clear linenumber
+(gdb) clear filename:linenumber
+
+########## continue
+
+# Set the program running again, after you have stopped it at a breakpoint.
+(gdb) continue
+
+########## step
+
+# Go ahead and execute the current source line, and then stop execution again before the next sourceline.
+(gdb) step
+
+########## next
+
+# Continue until the next source line in the current function
+# (actually, the current innermost stackframe, to be precise).
+(gdb) next
+
+# similar to step, except that
+# if the line about to be executed is a function call,
+# then that function call will be completely executed before execution stops again,
+# whereas with step execution will stop at the first line of the function that is called.
+
+########## until
+
+# like next, except that if you are at the end of a loop,
+# until will continue execution until the loop is exited,
+# whereas next will just take you back up to the beginning of the loop.
+(gdb) until
+
+########## list
+
+# Print out some lines from the source code around linenumber.
+(gdb) list linenumber
+
+# Print out lines from the beginning of that function
+(gdb) list function
+
+# Print out the lines just after the lines that you printed out with the previous list command。
+(gdb) list
+
+########## print
+
+# Print out the value of the expression, which could be just a variable name.
+(gdb) print expression
+
+# Print out the first 25 (for example) values in an array called list.
+(gdb) print list[0]@25

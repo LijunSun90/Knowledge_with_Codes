@@ -1,9 +1,14 @@
 
+# gcc is a C compiler.
+
 ################################################################################
 # Basic
 ################################################################################
 # Translate source file "foo.c" to object file "foo".
 gcc -o foo foo.c
+
+# I prefer to write in this way for the convenience of using other options.
+gcc foo.c -o foo
 
 # Translate source file "foo.c" to relocatable object program "a.out".
 gcc foo.c
@@ -88,4 +93,16 @@ gcc -c foo.s -o foo_from_s.o
 # Output "*.o" directly from "*.o".
 gcc foo.o -o foo_from_o
 
+
+################################################################################
+# Debug
+# -g    Generate source-level debug information
+################################################################################
+gcc -g foo.c -o foo
+
+
+################################################################################
+# Redirect the standard error to a file.
+################################################################################
+gcc foo.c 2> errors &
 
