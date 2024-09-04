@@ -106,3 +106,12 @@ gcc -g foo.c -o foo
 ################################################################################
 gcc foo.c 2> errors &
 
+
+################################################################################
+# Useful option.
+# man gcc
+# gcc --help
+# -W<warning>             Enable the specified warning
+# -w                      Suppress all warnings
+# -Wall	                  Enables some warnings.
+################################################################################

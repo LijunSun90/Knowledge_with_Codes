@@ -3,12 +3,25 @@
 # lldb is a clang debugger.
 # clang is a C, C++, and Objective-C compiler.
 
+# Reference:
 # [1] Tutorial: https://web.eecs.umich.edu/~sugih/pointers/summary.html
+# [2] (Practical Useful) GDB to LLDB command map: https://lldb.llvm.org/use/map.html
 
 ################################################################################
-# 1. Compile.
+# 1. Compile. Important!!!
 # "To prepare your program for debugging with gdb, you must compile it with the
--g flag."
+# -g flag."
+#
+# (1) If not use "gcc -g", and directly run "gcc foo.c -o foo",
+#     the output of running "gdb foo" is：
+#     "Reading symbols from ./reverse...(no debugging symbols found)...done."
+# (2) Otherwise, using "gcc -g", and run "gcc -g foo.c -o foo",
+#     the output of running "gdb foo" is：
+#     "Rea ding symbols from ./reverse...done."
+# (3) the manual of "gcc" for "-g" is:
+#     "Produce debugging information in the operating system's native format
+#      (stabs, COFF, XCOFF, or DWARF 2).
+#      GDB can work with this debugging information."
 ################################################################################
 gcc -g foo.c -o foo
 
@@ -126,3 +139,6 @@ lldb executable
 
 # Print out the first 25 (for example) values in an array called list.
 (gdb) print list[0]@25
+
+
+
