@@ -138,7 +138,8 @@ OMin_w = - (2^{w-1} - 1), when xo = [1, 0, ..., 0].
 
 4. Two's complement encoding.
 
-xt = (~xb) + 1 = xo + 1 = [xt_{w-1}, ..., xt_0], e.g., [1010].
+xt = xb, if xb is non-negative.
+xt = (~xb) + 1 = xo + 1 = [xt_{w-1}, ..., xt_0], if xb is negative, e.g., [1010].
 
 xt = [xo_{w-1}, ~xo_{w-2}, ..., xo_0] + 1,
 where the sign bit xo_{w-1} of the signed integer xo is kept as it is in xt.
@@ -157,9 +158,10 @@ e.g.,
 
 Property:
 
-1) xt = -xb = 2^w - xb = [xt_{w-1}, ..., xt_0] if xb >= 0, where the term "two" comes from.
+1) - xt = 2^w - xt = [xt_{w-1}, ..., xt_0] if xt >= 0, where the term "two" comes from.
 
-2) xb + xt = 2^w (if both the binary representation of xb and xt are interpreted as the unsigned date type).
+2) (- xt)_b + (xt)_b = 2^w
+   (if both the binary representation of (- xt) and xt are interpreted as the unsigned date type).
 
 3) To decimal (how to interpret the binary):
 
