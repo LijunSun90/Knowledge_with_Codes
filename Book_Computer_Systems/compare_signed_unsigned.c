@@ -13,7 +13,7 @@ int main(void)
 
     /*
     1. How to translate the constant: data type, long? int?
-    2. The constant number "-2^{w - 1}" is taken as interpret as unsigned.
+    2. The constant number "-2^{w - 1}" is taken and interpreted as unsigned.
     */
 
     // warning: format specifies type 'int' but the argument has type 'long'
@@ -77,13 +77,23 @@ int main(void)
     */
 
     // 0
+    // Explanation: -9223372036854775808 (TMin) is a special number that is interpreted as unsigned.
+    // The constant 9223372036854775807 is first taken as a signed number in C.
+    // But, in the expression "-9223372036854775808 < 9223372036854775807", there is an unsigned and a signed number.
+    // So, the signed number is implicitly casted to unsigned.
+    // Therefore, the result of the expression is 0.
     printf("-9223372036854775808 < 9223372036854775807: %d\n", -9223372036854775808 < 9223372036854775807);
 
     // 1
+    // Explanation: the variable i is explicitly a signed number.
+    // So, the expression "i < 9223372036854775807" is the comparison of two signed number.
+    // Therefore, the result is 1.
     int i = -9223372036854775808;
     printf("i < 9223372036854775807: %d\n", i < 9223372036854775807);
 
     // 1
+    // Explanation: the ""-9223372036854775807 - 1 < 9223372036854775807" is the comparison of two signed number.
+    // Therefore, the result is 1.
     printf("-9223372036854775807 - 1 < 9223372036854775807: %d\n", -9223372036854775807 - 1 < 9223372036854775807);
     return 0;
 }

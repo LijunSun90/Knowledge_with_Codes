@@ -7,7 +7,8 @@
 #include <string.h>
 /* $begin show-bytes */
 
-typedef unsigned char *byte_pointer;
+
+
 
 void show_bytes(byte_pointer start, size_t len) {
     size_t i;
@@ -94,13 +95,6 @@ show_bytes((byte_pointer) s, strlen(s));
 /* $end show-lstring */
 }
 
-void string_12345() {
-const char *s = "12345";
-show_bytes((byte_pointer) s, strlen(s));
-printf("\n");
-show_bytes((byte_pointer) s, 6);
-}
-
 void show_twocomp() 
 {
 /* $begin show-twocomp */
@@ -133,8 +127,6 @@ int main(int argc, char *argv[])
 	string_ueg();
 	printf("Calling string_leg\n");
 	string_leg();
-	printf("Calling string_12345\n");
-	string_12345();
     }
     return 0;
 }

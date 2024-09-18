@@ -10,4 +10,9 @@
 
 [2] (K&RC) Kernighan, B.W. and Ritchie, D.M., 1988. The C programming language. prentice-Hall.
 
-The codes in this folder are from the book [1].
+[3] R. C. Seacord. Secure Coding in C and C++, Second Edition. Addison-Wesley, 2013.
+
+* Codes in this folder are from:
+
+1. the book [1].
+2. others (including writing by myself).

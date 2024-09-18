@@ -1,3 +1,4 @@
+#include <stdio.h>
 
 
 /* From CSAPP: Problem 2.27 */
@@ -17,3 +18,33 @@ int tadd_ok(int x, int y){
     return !neg_over && !pos_over;
 }
 
+
+
+void safe_loop_count_down_with_unsigned(cnt)
+{
+    unsigned i;
+    for (i = cnt-2; i < cnt; i--)
+        printf('i:%u\n', i);
+}
+
+void safe_loop_count_down_with_unsigned_better(cnt)
+{
+    // Work even if cnt = UMax.
+    size_t i;
+    for (i = cnt-2; i < cnt; i--)
+        printf('i:%u\n', i);
+}
+
+
+void safe_loop_count_up(len)
+{
+    size_t i;
+    for (i = 0; i < len; i++)
+        printf('i:%u\n', i);
+}
+
+
+int main(void)
+{
+    return 0;
+}
