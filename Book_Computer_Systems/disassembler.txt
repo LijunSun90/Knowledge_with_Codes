@@ -1,0 +1,5 @@
+
+# Disassembler.
+# objdump (object dump)
+
+objdump -d foo.o
